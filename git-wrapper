@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# A git wrapper which can read credentials from stdin
+# (instead of opening /dev/tty, which breaks docker)
+
+realpath() { echo `cd $(dirname $1); pwd`/$(basename $1) ; }
+if [ $1 = "auth-helper" ]; then
+	echo username=$GITUSER
+	echo password=$GITPW
+elif [ $1 = "auth" ]; then
+	shift
+	echo >&2 -n "Username: "; read GITUSER; export GITUSER
+	echo >&2 -n "Password: "; read GITPW; export GITPW
+	exec /usr/bin/git -c credential.helper="`realpath $0` auth-helper" $*
+else
+	exec /usr/bin/git -c credential.helper="`realpath $0` auth-helper" $*
+fi

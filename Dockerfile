@@ -7,11 +7,13 @@ run apt-get install -y python
 run apt-get install -y curl
 run apt-get install -y vim
 run apt-get install -y strace
+run apt-get install -y diffstat
 
 # Install go
 run curl https://go.googlecode.com/files/go1.2.1.linux-amd64.tar.gz | tar -C /usr/local -zx
 env GOROOT /usr/local/go
 env PATH /usr/local/go/bin:$PATH
+
 
 run useradd dev
 run mkdir /home/dev && chown -R dev: /home/dev

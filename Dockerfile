@@ -15,16 +15,30 @@ env GOROOT /usr/local/go
 env PATH /usr/local/go/bin:$PATH
 
 
+# Setup home environment
 run useradd dev
 run mkdir /home/dev && chown -R dev: /home/dev
+run mkdir /home/dev/go
+
 # We need to create an empty file, otherwise the volume will
 # belong to root.
 # This is probably a Docker bug.
-run touch /home/dev/placeholder
-run mkdir /home/dev/go
-volume /home/dev
+run mkdir /var/shared/
+run touch /var/shared/placeholder
+run chown -R dev:dev /var/shared
+volume /var/shared
 
-user dev
 workdir /home/dev
 env HOME /home/dev
+add vimrc /home/dev/.vimrc
+add bash_profile /home/dev/.bash_profile
+add gitconfig /home/dev/.gitconfig
+run chown -R dev:dev /home/dev
+
+# Link in shared parts of the home directory
+run ln -s /var/shared/.ssh
+run ln -s /var/shared/.bash_history
+
+user dev
+
 entrypoint bash

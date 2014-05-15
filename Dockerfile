@@ -39,6 +39,7 @@ run chown -R dev:dev /home/dev
 # Link in shared parts of the home directory
 run ln -s /var/shared/.ssh
 run ln -s /var/shared/.bash_history
+run ln -s /var/shared/.maintainercfg
 
 user dev
 

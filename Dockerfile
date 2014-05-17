@@ -18,12 +18,16 @@ run curl https://go.googlecode.com/files/go1.2.1.linux-amd64.tar.gz | tar -C /us
 env GOROOT /usr/local/go
 env PATH /usr/local/go/bin:$PATH
 
-
 # Setup home environment
 run useradd dev
 run mkdir /home/dev && chown -R dev: /home/dev
-run mkdir /home/dev/go
+run mkdir -p /home/dev/go /home/dev/bin /home/dev/lib /home/dev/include
+env PATH /home/dev/bin:$PATH
+env PKG_CONFIG_PATH /home/dev/lib/pkgconfig
+env LD_LIBRARY_PATH /home/dev/lib
+env GOPATH /home/dev/go:$GOPATH
 
+# Create a shared data volume
 # We need to create an empty file, otherwise the volume will
 # belong to root.
 # This is probably a Docker bug.

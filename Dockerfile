@@ -8,6 +8,10 @@ run apt-get install -y curl
 run apt-get install -y vim
 run apt-get install -y strace
 run apt-get install -y diffstat
+run apt-get install -y pkg-config
+run apt-get install -y cmake
+run apt-get install -y build-essential
+run apt-get install -y tcpdump
 
 # Install go
 run curl https://go.googlecode.com/files/go1.2.1.linux-amd64.tar.gz | tar -C /usr/local -zx

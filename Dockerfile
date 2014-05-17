@@ -50,4 +50,6 @@ run ln -s /var/shared/.maintainercfg
 
 user dev
 
-entrypoint bash
+
+
+entrypoint ["bash", "-l"]

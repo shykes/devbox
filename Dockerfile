@@ -42,7 +42,6 @@ add vimrc /home/dev/.vimrc
 add vim /home/dev/.vim
 add bash_profile /home/dev/.bash_profile
 add gitconfig /home/dev/.gitconfig
-run chown -R dev:dev /home/dev
 
 # Link in shared parts of the home directory
 run ln -s /var/shared/.ssh

@@ -12,6 +12,7 @@ run apt-get install -y pkg-config
 run apt-get install -y cmake
 run apt-get install -y build-essential
 run apt-get install -y tcpdump
+run apt-get install -y screen
 
 # Install go
 run curl https://go.googlecode.com/files/go1.2.1.linux-amd64.tar.gz | tar -C /usr/local -zx
@@ -48,8 +49,9 @@ run ln -s /var/shared/.ssh
 run ln -s /var/shared/.bash_history
 run ln -s /var/shared/.maintainercfg
 
+run chown -R dev: /home/dev
 user dev
 
 
 
-entrypoint ["bash", "-l"]
+entrypoint ["/bin/bash", "-l"]

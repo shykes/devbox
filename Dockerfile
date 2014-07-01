@@ -1,4 +1,4 @@
-from ubuntu:12.10
+from ubuntu:14.04
 
 run apt-get update -y
 run apt-get install -y mercurial
@@ -28,6 +28,8 @@ env PKG_CONFIG_PATH /home/dev/lib/pkgconfig
 env LD_LIBRARY_PATH /home/dev/lib
 env GOPATH /home/dev/go:$GOPATH
 
+run go get github.com/dotcloud/gordon/pulls
+
 # Create a shared data volume
 # We need to create an empty file, otherwise the volume will
 # belong to root.
@@ -51,7 +53,3 @@ run ln -s /var/shared/.maintainercfg
 
 run chown -R dev: /home/dev
 user dev
-
-
-
-entrypoint ["/bin/bash", "-l"]

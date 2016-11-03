@@ -36,8 +36,6 @@ set smartcase
 set showfulltag
 " Speed up macros
 set lazyredraw
-" No annoying error noises
-set noerrorbells
 " Wrap on these
 set whichwrap+=<,>,[,]
 " Use the cool tab complete menu
